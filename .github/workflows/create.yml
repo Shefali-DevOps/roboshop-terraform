@@ -12,7 +12,8 @@ jobs:
 
   DEV-APPLY:
     runs-on: self-hosted
-    environment: dev
+#    environment: dev
+    needs: DEV-PLAN
     steps:
       - uses: actions/checkout@v4
       - name: Terraform Init
@@ -20,25 +21,25 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -var-file=env-dev/main.tfvars -auto-approve
 
-  QA:
-    runs-on: ubuntu-latest
-    environment: qa
-    needs: DEV-APPLY
-    steps:
-      - run: echo Just a dummy job
+#  QA:
+#    runs-on: ubuntu-latest
+#    environment: qa
+#    needs: DEV-APPLY
+#    steps:
+#      - run: echo Just a dummy job
+#
+#  UAT:
+#    runs-on: ubuntu-latest
+#    environment: uat
+#    needs: QA
+#    steps:
+#      - run: echo Just a dummy job
 
-  UAT:
-    runs-on: ubuntu-latest
-    environment: uat
-    needs: QA
-    steps:
-      - run: echo Just a dummy job
-
-  PROD:
-    runs-on: self-hosted
-    environment: prod
-    needs: UAT
-    steps:
-      - uses: actions/checkout@v4
-      - name: Terraform Init
-        run: terraform init -backend-config=env-prod/state.tfvars
+#  PROD:
+#    runs-on: self-hosted
+#    environment: prod
+#    needs: UAT
+#    steps:
+#      - uses: actions/checkout@v4
+#      - name: Terraform Init
+#        run: terraform init -backend-config=env-prod/state.tfvars
