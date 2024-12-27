@@ -185,10 +185,10 @@ resource "aws_eip" "ngw_ip" {
 resource "aws_nat_gateway" "main" {
   allocation_id = aws_eip.ngw_ip.*.id[count.index]
   subnet_id     = aws_subnet.public.*.id[count.index]
-}
 
   tags = {
     Name = "nat-gw-${split("-", var.availability_zones[count.index])[2]}"
   }
+}
 
 
