@@ -91,7 +91,7 @@ resource "aws_route_table" "web" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.main.id
+    gateway_id = aws_nat_gateway.main.id
   }
 
   route {
@@ -110,7 +110,7 @@ resource "aws_route_table" "app" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.main.id
+    gateway_id = aws_nat_gateway.main.id
   }
 
   route {
@@ -129,7 +129,7 @@ resource "aws_route_table" "db" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.main.id
+    gateway_id = aws_nat_gateway.main.id
   }
 
   route {
