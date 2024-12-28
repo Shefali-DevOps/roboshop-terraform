@@ -27,4 +27,6 @@ module "apps" {
   vpc_id        = module.vpc.vpc_id
   env           = var.env
   bastion_nodes = var.bastion_nodes
+  asg           = true
 }
+
