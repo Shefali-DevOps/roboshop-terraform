@@ -14,6 +14,7 @@ vpc = {
 }
 
 apps= {
+
   frontend = {
     subnet_ref = "web"
     instance_type = "t2.micro"
@@ -26,6 +27,9 @@ apps= {
     }
   }
 }
+
+
+
 
 db ={
   mongo ={
