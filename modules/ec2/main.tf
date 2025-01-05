@@ -115,7 +115,7 @@ resource "aws_security_group" "load-balancer" {
     from_port   = 80
     to_port     = 80
     protocol    = "TCP"
-    cidr_blocks = var.bastion_nodes
+    cidr_blocks = var.name == "frontend" ? ["0.0.0.0/0"] :var.allow_sg_cidr
   }
 
   tags = {
