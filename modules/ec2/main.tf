@@ -115,7 +115,7 @@ resource "aws_security_group" "load-balancer" {
     from_port   = 80
     to_port     = 80
     protocol    = "TCP"
-    cidr_blocks = var.name == "frontend" ? ["0.0.0.0/0"] :var.allow_sg_cidr
+    cidr_blocks = var.allow_lb_sg_cidr
   }
 
   tags = {
@@ -149,6 +149,7 @@ resource "aws_lb_target_group" "main" {
     unhealthy_threshold = 2
     interval = 5
     path = "/health"
+    timeout = 3
   }
 }
 
