@@ -145,7 +145,7 @@ resource "aws_lb_target_group" "main" {
 
   health_check {
     enabled = true
-    healthy_threshold = 2
+    healthy_threshold = 3
     unhealthy_threshold = 2
     interval = 5
     path = "/health"
