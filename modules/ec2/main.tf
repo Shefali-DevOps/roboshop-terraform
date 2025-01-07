@@ -19,8 +19,8 @@ resource "aws_security_group" "allow_tls" {
   }
 
   ingress {
-    from_port   = allow_port
-    to_port     = allow_port
+    from_port   = var.allow_port
+    to_port     = var.allow_port
     protocol    = "TCP"
     cidr_blocks = var.allow_sg_cidr
   }
