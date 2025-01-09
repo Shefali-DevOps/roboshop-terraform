@@ -34,7 +34,8 @@ module "apps" {
   vault_token   = var.vault_token
   zone_id = var.zone_id
   dns_name = module.load-balancers[each.value["lb_ref"]].dns_name
-
+  listener_arn = module.load-balancers[each.value["lb_ref"]].listener_arn
+  lb_rule_priority= each.value["lb_rule_priority"]
 }
 
 module "db" {
@@ -67,7 +68,7 @@ module "load-balancers" {
   vpc_id              = module.vpc.vpc_id
   subnet_ids          = module.vpc.subnets[each.value["subnet_ref"]]
   acm_https_arn       = each.value["acm_https_arn"]
-  listener_port        = each.value["listener_port"]
-  listener_protocol    = each.value["listener_protocol"]
+  listener_port       = each.value["listener_port"]
+  listener_protocol   = each.value["listener_protocol"]
   ssl_policy          = each.value["ssl_policy"]
 }

@@ -29,6 +29,7 @@ apps= {
       min = 1
     }
     lb_ref = "public"
+    lb_rule_priority = 1
   }
 
   catalogue = {
@@ -43,6 +44,7 @@ apps= {
       min = 1
     }
     lb_ref = "private"
+    lb_rule_priority = 1
   }
 
   cart = {
@@ -57,6 +59,7 @@ apps= {
       min = 1
     }
     lb_ref = "private"
+    lb_rule_priority = 2
   }
 
   user = {
@@ -71,6 +74,7 @@ apps= {
       min = 1
     }
     lb_ref = "private"
+    lb_rule_priority = 3
   }
 
   shipping = {
@@ -85,6 +89,7 @@ apps= {
       min = 1
     }
     lb_ref = "private"
+    lb_rule_priority = 4
   }
 
   payment = {
@@ -98,9 +103,9 @@ apps= {
       max = 1
       min = 1
     }
-
   }
   lb_ref = "private"
+  lb_rule_priority = 5
 }
 
 
