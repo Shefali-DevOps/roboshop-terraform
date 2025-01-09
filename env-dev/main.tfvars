@@ -28,9 +28,7 @@ apps= {
       max = 1
       min = 1
     }
-    lb_internal = false
-    lb_subnet_ref = "public"
-    acm_https_arn = "arn of ACM"
+    lb_ref = "public"
   }
 
   catalogue = {
@@ -44,9 +42,7 @@ apps= {
       max = 1
       min = 1
     }
-    lb_internal = true
-    lb_subnet_ref = "app"
-    acm_https_arn = null
+    lb_ref = "private"
   }
 
   cart = {
@@ -60,9 +56,7 @@ apps= {
       max = 1
       min = 1
     }
-    lb_internal = true
-    lb_subnet_ref = "app"
-    acm_https_arn = null
+    lb_ref = "private"
   }
 
   user = {
@@ -76,9 +70,7 @@ apps= {
       max = 1
       min = 1
     }
-    lb_internal = true
-    lb_subnet_ref = "app"
-    acm_https_arn = null
+    lb_ref = "private"
   }
 
   shipping = {
@@ -92,9 +84,7 @@ apps= {
       max = 1
       min = 1
     }
-    lb_internal = true
-    lb_subnet_ref = "app"
-    acm_https_arn = null
+    lb_ref = "private"
   }
 
   payment = {
@@ -108,11 +98,9 @@ apps= {
       max = 1
       min = 1
     }
-    lb_internal = true
-    lb_subnet_ref = "app"
-    acm_https_arn = null
-  }
 
+  }
+  lb_ref = "private"
 }
 
 
@@ -149,12 +137,14 @@ load_balancers = {
     load_balancer_type = "application"
     allow_lb_sg_cidr   = ["10.10.2.0/24", "10.10.3.0/24", "10.10.4.0/24", "10.10.5.0/24"]
     subnet_ref         = "app"
+    acm_https_arn      = null
   }
   public = {
     internal           = false
     load_balancer_type = "application"
     allow_lb_sg_cidr   = ["0.0.0.0/0"]
     subnet_ref         = "public"
+    acm_https_arn      = "<arn of acm>"
   }
 }
 
