@@ -54,7 +54,7 @@ resource "aws_lb_listener" "public-http" {
     redirect {
       port = "443"
       protocol = "HTTPS"
-      status_code = "HTPPS_301"
+      status_code = "HTTP_301"
     }
   }
 }
@@ -69,7 +69,7 @@ resource "aws_lb_listener" "main" {
   certificate_arn    = var.acm_https_arn
 
   default_action {
-    type = "fixed-respponse"
+    type = "fixed-response"
 
     fixed_response {
       content_type = "text/plain"
