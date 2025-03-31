@@ -1,5 +1,5 @@
 env = "dev"
-bastion_nodes = ["172.31.22.179/32"]
+bastion_nodes = ["172.31.92.120/32"]
 zone_id = "Z04468998YJS3W1N2Q1P"
 
 
