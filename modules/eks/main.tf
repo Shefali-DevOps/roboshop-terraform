@@ -28,3 +28,10 @@ resource "aws_eks_node_group" "main" {
     min_size     = each.value["min_size"]
   }
 }
+
+resource "aws_eks_addon" "addons" {
+  for_each = var.add_ons
+  cluster_name  = aws_eks_cluster.main.name
+  addon_name    = each.key
+  addon_version = each.value
+}

@@ -161,13 +161,21 @@ db ={
 
 eks {
   eks_version = "1.30"
+
   node_groups {
     main-spot = {
-      max_size = 3
-      min_size = 1
+      max_size      = 3
+      min_size      = 1
       instance_types = ["t3.medium"]
       capacity_type = "SPOT"
     }
   }
-}
+
+    add_ons{
+      vpc-cni = "v1.18.3-eksbuild.2"
+      kube-proxy= "v1.30.3-eksbuild.2"
+      coredns = "v1.11.3-eksbuild.11"
+    }
+  }
+
 
