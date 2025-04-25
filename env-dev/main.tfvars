@@ -42,37 +42,38 @@ db ={
   }
 }
 
-eks {
+eks = {
   eks_version = "1.30"
 
-  node_groups {
-    main-spot = {
-      max_size      = 3
-      min_size      = 1
+  node_groups = {
+    main-spot1 = {
+      max_size       = 3
+      min_size       = 1
       instance_types = ["t3.medium"]
-      capacity_type = "SPOT"
+      capacity_type  = "SPOT"
     }
   }
 
-    add_ons{
-      vpc-cni = "v1.18.3-eksbuild.2"
-      kube-proxy= "v1.30.3-eksbuild.2"
-      coredns = "v1.11.3-eksbuild.11"
+  add_ons = {
+    vpc-cni                = "v1.18.3-eksbuild.2"
+    kube-proxy             = "v1.30.3-eksbuild.2"
+    coredns                = "v1.11.1-eksbuild.11"
+    eks-pod-identity-agent = "v1.3.2-eksbuild.2"
+  }
+
+  eks-iam-access = {
+    workstation = {
+      principal_arn     = "arn:aws:iam::633788536644:role/workstation-role"
+      policy_arn        = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+      kubernetes_groups = []
     }
-
-    eks-iam-access{
-      workstation{
-        principal_arn = "role of workstation"
-        policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-        kubernetes_groups = []
-      }
-
-      sso-user{
-        principal_arn = "role of your sso "
-        policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-        kubernetes_groups = []
-      }
+    sso-user = {
+      principal_arn     = "arn:aws:iam::633788536644:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_DevOpsEngineers_116fe5ae0083f958"
+      policy_arn        = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+      kubernetes_groups = []
     }
   }
+
+}
 
 
